@@ -1,9 +1,13 @@
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { TemperaturePipe } from "./temperature.pipe";
+import { SortPipe } from "./sort.pipe";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
+  imports: [DatePipe, TemperaturePipe, SortPipe]
 })
 export class AppComponent {
   currentDate = new Date();
@@ -19,6 +23,9 @@ export class AppComponent {
   ];
 
   onReset(index: number) {
-    this.historicTemperatures[index] = 18;
+    this.historicTemperatures[index] = 18; // will not going to work when sort pipe set it as pure true call it as pure pipe
+    // const newTemp = [...this.historicTemperatures];
+    // newTemp[index] = 18;
+    // this.historicTemperatures = newTemp
   }
 }
